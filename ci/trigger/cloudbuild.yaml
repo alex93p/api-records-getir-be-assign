@@ -8,11 +8,6 @@ steps:
     args:
       - 'run'
       - 'test'
-  - name: node
-    entrypoint: npm
-    args:
-      - 'run'
-      - 'test:e2e'
   - name: gcr.io/cloud-builders/docker
     args:
       - build
@@ -45,7 +40,7 @@ steps:
       - '--port=8080'
       - '--quiet'
       - '--region=$_DEPLOY_REGION'
-      - '--service-account=api-records-getir-be-assign@quickstart-k8s-demo.iam.gserviceaccount.com'
+      - '--service-account=$_SERVICE_ACCOUNT'
       - '--timeout=300'
       - '--set-secrets=SERVER_URL=SERVER_URL_GETIR_API_RECORDS_BE_ASSIGN:latest,MONGODB=MONGODB_GETIR_TEST_CONNECTION_STRING:latest'
       - >-
