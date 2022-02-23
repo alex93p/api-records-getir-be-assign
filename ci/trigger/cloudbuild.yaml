@@ -1,4 +1,14 @@
 steps:
+  - name: node
+    entrypoint: npm
+    args:
+      - 'run'
+      - 'test'
+  - name: node
+    entrypoint: npm
+    args:
+      - 'run'
+      - 'test:e2e'
   - name: gcr.io/cloud-builders/docker
     args:
       - build
