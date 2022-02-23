@@ -1,8 +1,0 @@
-{
-  "NODE_ENV": "NODE_ENV",
-  "SERVER": {
-    "PORT": "SERVER_PORT",
-    "URL": "SERVER_URL"
-  },
-  "MONGODB": "MONGODB"
-}
