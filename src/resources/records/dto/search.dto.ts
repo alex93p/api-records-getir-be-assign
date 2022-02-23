@@ -1,6 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-// todo: comments
+/**
+ * data transfer object input used for search
+ */
 export class SearchDto {
   @ApiProperty({ required: true, nullable: false, format: 'date' })
   startDate: Date;

@@ -4,7 +4,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RecordsModule } from './resources/records/records.module';
 import env from './env/env';
 
-// todo: comments
+/**
+ * loads all modules, controllers and providers in the application
+ * and provides the connection to the database
+ */
 @Module({
   imports: [MongooseModule.forRoot(env.MONGODB), RecordsModule],
   controllers: [AppController],

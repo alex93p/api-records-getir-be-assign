@@ -10,7 +10,13 @@ import { Schema } from 'joi';
 export class JoiValidationPipe implements PipeTransform {
   constructor(private schema: Schema) {}
 
-  // todo: comments
+  /**
+   * generic validation pipe for input dto used into controllers
+   * if validation fails it will throw an error
+   * and returns a 400 http status code to the client
+   * @param value
+   * @param metadata
+   */
   transform(value: any, metadata: ArgumentMetadata) {
     const { error } = this.schema.validate(value);
     if (error)

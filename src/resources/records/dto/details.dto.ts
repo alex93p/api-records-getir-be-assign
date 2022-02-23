@@ -1,6 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-// todo: comments
+/**
+ * data transfer object returned to the client
+ */
 export class DetailsDto {
   @ApiProperty({ required: true, nullable: false })
   key: string;

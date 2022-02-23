@@ -4,7 +4,12 @@ process.env['NODE_CONFIG_DIR'] = resolve(process.cwd(), 'src/config');
 import config from 'config';
 import { custom_environment_variables } from '../interfaces/custom_environment_variables';
 
-// todo: comments
+/**
+ * load environments variables from the execution process shell
+ * and pass the result as an object variable
+ * @param custom_environment_variables
+ * @param parentKey
+ */
 function parse(
   custom_environment_variables: custom_environment_variables,
   parentKey?: string[],

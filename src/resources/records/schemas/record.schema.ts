@@ -3,7 +3,9 @@ import { Document } from 'mongoose';
 
 export type RecordDocument = Record & Document;
 
-// todo: comments
+/**
+ * schema collection in the database
+ */
 @Schema()
 export class Record {
   @Prop()

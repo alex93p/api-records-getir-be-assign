@@ -23,11 +23,19 @@ import {
   Ok,
 } from './docs/openapi.docs';
 
-// todo: comments
 @Controller()
 export class RecordsController {
   constructor(private readonly recordsService: RecordsService) {}
 
+  /**
+   * method POST "/" in order to perform a query search
+   * uses validation pipe for input
+   * if validation fails return a bad request response as defined in validation pipe
+   * than calls the service to resolve the request
+   * finally swithes to service code response to give back the correct response to the client
+   * if successes then return 200 http status code with records
+   * if fails then return 500 http status code with the error
+   */
   @ApiTags('search records')
   @ApiOperation({ description: 'Query data records' })
   @ApiBody({ type: SearchDto })

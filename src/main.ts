@@ -8,7 +8,12 @@ import {
   SwaggerModule,
 } from '@nestjs/swagger';
 
-// todo: comments
+/**
+ * bootstrap the application
+ * configures helmet and enable cors
+ * then setups the documentation in openapi format reachable in $URL/docs/openapi
+ * finally starts the http server
+ */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 

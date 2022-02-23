@@ -4,7 +4,10 @@ import { RecordsController } from './records.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Record, RecordSchema } from './schemas/record.schema';
 
-// todo: comments
+/**
+ * loads modules, controllers and providers needed to export the entire module
+ * also provides the mapping with collection in the database
+ */
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Record.name, schema: RecordSchema }]),

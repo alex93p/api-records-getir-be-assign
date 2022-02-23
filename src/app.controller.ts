@@ -5,7 +5,10 @@ import {
   ApiOperation, ApiTags,
 } from '@nestjs/swagger';
 
-// todo: comments
+/**
+ * app controller for just health check purpose
+ * exposes only one method GET on "/"
+ */
 @Controller()
 export class AppController {
   @ApiTags('health check')

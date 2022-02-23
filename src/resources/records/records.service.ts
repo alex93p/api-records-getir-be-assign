@@ -10,13 +10,18 @@ export enum SERVICE_CODE {
   QUERY_ERROR,
 }
 
-// todo: comments
 @Injectable()
 export class RecordsService {
   constructor(
     @InjectModel(Record.name) private recordModel: Model<RecordDocument>,
   ) {}
 
+  /**
+   * perform a query on database matching the criteria passed from the client
+   * then project the results to be compliant with the api specification
+   * if fails returns the specific error
+   * @param criteria
+   */
   async search(
     criteria: SearchDto,
   ): Promise<
