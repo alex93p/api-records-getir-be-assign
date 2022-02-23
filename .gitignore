@@ -3,8 +3,6 @@
 /node_modules
 
 /.run
-src/config/custom-environment-variables.json
-src/env/interfaces/custom_environment_variables.ts
 
 # Logs
 logs
