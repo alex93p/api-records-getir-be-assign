@@ -1,0 +1,47 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - '$_IMAGE_NAME:$TAG_NAME'
+      - .
+      - '-f'
+      - $_DOCKERFILE_NAME
+    dir: $_DOCKERFILE_DIR
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_IMAGE_NAME:$TAG_NAME'
+    id: Push
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - '--concurrency=100'
+      - '--cpu=1'
+      - '--image=$_IMAGE_NAME:$TAG_NAME'
+      - '--ingress=all'
+      - '--allow-unauthenticated'
+      - '--max-instances=10'
+      - '--memory=512Mi'
+      - '--min-instances=0'
+      - '--platform=managed'
+      - '--port=8080'
+      - '--quiet'
+      - '--region=$_DEPLOY_REGION'
+      - '--service-account=api-records-getir-be-assign@quickstart-k8s-demo.iam.gserviceaccount.com'
+      - '--timeout=300'
+      - '--set-secrets=SERVER_URL=SERVER_URL_GETIR_API_RECORDS_BE_ASSIGN:latest,MONGODB=MONGODB_GETIR_TEST_CONNECTION_STRING:latest'
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID
+    id: Deploy
+    entrypoint: gcloud
+images:
+  - '$_IMAGE_NAME:$TAG_NAME'
+timeout: 1800s
+options:
+  substitutionOption: ALLOW_LOOSE
+tags:
+  - $_SERVICE_NAME
