@@ -25,7 +25,7 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('Amministro.io Core API')
+    .setTitle('API Getir Backend Assignment')
     .setVersion(env.VERSION)
     .addServer(env.SERVER.URL)
     .build();
